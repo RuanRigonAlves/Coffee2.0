@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::resource('products', ProductController::class);
+
 Route::get('/', function () {
-    return view('products/index', [
-        'products' => Product::all()
-    ]);
+    return view('home');
 });

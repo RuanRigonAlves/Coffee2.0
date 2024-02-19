@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .btn{
+        @apply p-2 bg-white rounded border-2 border-transparent hover:border-black ease-in duration-300 
+    }
+}
