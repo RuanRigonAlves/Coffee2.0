@@ -16,8 +16,25 @@
             </div>
             <div>
                 <h3>Category</h3>
-                <form method="GET" action="" class="flex">
+                <form method="GET" action="{{ route('products.index') }}" class="">
+                    <div>
+                        <input type="checkbox" name="filter[]" id="food" value="food">
+                        <label for="food">Food</label>
+                    </div>
 
+                    <div>
+                        <input type="checkbox" name="filter[]" id="drink" value="drink">
+                        <label for="drink">Drink</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="filter[]" id="dessert" value="dessert">
+                        <label for="dessert">Dessert</label>
+                    </div>
+
+                    <div>
+                        <button class="btn w-40 ">Filter</button>
+                    </div>
                 </form>
             </div>
         </div>
