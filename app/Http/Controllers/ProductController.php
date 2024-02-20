@@ -9,32 +9,36 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
+        $products = [];
+        $productName = $request->input("product");
+        $categories = $request->input("category");
+        $sort = $request->input("sort", '');
 
-        if (!empty($request->input("product"))) {
-            $productName = $request->input("product");
+        $query = Product::query();
 
-            $product = Product::where("name", "like", "%" . $productName . "%")->get();
-        } else {
-            $product = Product::all();
+        if (!empty($productName)) {
+            $query->where('name', 'like', '%' . $productName . '%');
         }
 
-        if (!empty($request->input("filter"))) {
-
-            $filters = $request->input("filter");
-
-            $filteredItems = [];
-
-            foreach ($filters as $value) {
-                $products = Product::where("category", "like", "%" . $value . "%")->get();
-
-                foreach ($products as $product) {
-                    $filteredItems[] = $product;
+        if (!empty($categories)) {
+            $query->where(function ($q) use ($categories) {
+                foreach ($categories as $category) {
+                    $q->orWhere('category', $category);
                 }
-            }
-
-            $product = $filteredItems;
+            });
         }
 
-        return view('products.index', ['products' => $product]);
+        if (!empty($sort)) {
+            if ($sort == "price") {
+                $query->orderBy("price");
+            } elseif ($sort == "alphabetical") {
+                $query->orderBy("name");
+            }
+        }
+
+        $products = $query->get();
+
+
+        return view('products.index', ['products' => $products]);
     }
 }

@@ -5,40 +5,60 @@
 @section('content')
 
     <div class="flex gap-2">
-        <div class="w-60 bg-gray-500">
+        <section class="w-60 bg-gray-400">
             <div>
                 <form method="GET" action="{{ route('products.index') }}" class="flex">
-                    <input type="text" name="product" placeholder="search">
-                    <button type="submit" class="">
-                        @include('icons.search-icon')
-                    </button>
-                </form>
+                    <input type="text" name="product" placeholder="search" value="{{ request('product') }}">
             </div>
             <div>
                 <h3>Category</h3>
-                <form method="GET" action="{{ route('products.index') }}" class="">
-                    <div>
-                        <input type="checkbox" name="filter[]" id="food" value="food">
-                        <label for="food">Food</label>
-                    </div>
+                <div>
+                    <input type="checkbox" name="category[]" id="food" value="food"<?php echo isset($_GET['filter']) && in_array('food', $_GET['filter']) ? 'checked' : ''; ?>>
+                    <label for="food">Food</label>
+                </div>
 
-                    <div>
-                        <input type="checkbox" name="filter[]" id="drink" value="drink">
-                        <label for="drink">Drink</label>
-                    </div>
+                <div>
+                    <input type="checkbox" name="category[]" id="drink" value="drink">
+                    <label for="drink">Drink</label>
+                </div>
 
-                    <div>
-                        <input type="checkbox" name="filter[]" id="dessert" value="dessert">
-                        <label for="dessert">Dessert</label>
-                    </div>
+                <div>
+                    <input type="checkbox" name="category[]" id="dessert" value="dessert">
+                    <label for="dessert">Dessert</label>
+                </div>
 
-                    <div>
-                        <button class="btn w-40 ">Filter</button>
-                    </div>
+                <div>
+                    <button class="btn w-40 ">Search</button>
+                </div>
                 </form>
             </div>
-        </div>
-        <div>
+        </section>
+
+        <section>
+
+            <div>
+                @php
+                    $sort = [
+                        'price' => 'Price',
+                        'alphabetical' => 'Alphabetical',
+                    ];
+                @endphp
+
+                <ul class=" flex bg-gray-400 mb-4 py-4">
+                    <li>
+                        <p>Sort by:</p>
+                    </li>
+
+                    @foreach ($sort as $key => $label)
+                        <li class="price-sort ml-4 ">
+                            <a href="{{ route('products.index', [...request()->query(), 'sort' => $key]) }}">{{ $label }}
+                            </a>
+                        </li>
+                    @endforeach
+
+                </ul>
+            </div>
+
             <ul class="grid grid-cols-3 gap-2">
                 @forelse ($products as $product)
                     <li class="w-80 mb-5 bg-green-100">
@@ -54,7 +74,7 @@
                 @endforelse
 
             </ul>
-        </div>
+        </section>
     </div>
 
 @endsection

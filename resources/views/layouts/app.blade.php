@@ -3,6 +3,8 @@
     <head>
         <title>Coffee - @yield('title')</title>
         @vite('resources/css/app.css')
+
+        @stack('scripts')
     </head>
 
     <body class="bg-gradient-to-r from-cyan-800 to-teal-800">
