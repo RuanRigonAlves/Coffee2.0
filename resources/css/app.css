@@ -4,6 +4,21 @@
 
 @layer components {
     .btn{
-        @apply p-2 bg-white rounded border-2 border-transparent hover:border-black ease-in duration-300 
+        @apply p-1 bg-gray-500 rounded border-2 border-transparent hover:border-black ease-in duration-300 
     }
+
+    .border-effect {
+        @apply border-b border-transparent ease-in duration-300 hover:border-slate-300
+    }
+
 }
+
+html {
+    @apply text-slate-100
+}
+
+@layer base {
+    html {
+      font-family: "Poppins";
+    }
+  }

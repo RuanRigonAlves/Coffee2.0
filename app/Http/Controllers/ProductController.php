@@ -12,7 +12,9 @@ class ProductController extends Controller
         $products = [];
         $productName = $request->input("product");
         $categories = $request->input("category");
-        $sort = $request->input("sort", '');
+        $sort = $request->input("sort");
+        $order = $request->input("order");
+
 
         $query = Product::query();
 
@@ -28,16 +30,20 @@ class ProductController extends Controller
             });
         }
 
+
         if (!empty($sort)) {
             if ($sort == "price") {
-                $query->orderBy("price");
+                $query->orderBy("price", $order);
             } elseif ($sort == "alphabetical") {
-                $query->orderBy("name");
+                $query->orderBy("name", $order);
+            } elseif ($sort == "rating") {
+                $query->orderBy("rating", $order);
             }
         }
 
         $products = $query->get();
 
+        // dd(count($products));
 
         return view('products.index', ['products' => $products]);
     }
