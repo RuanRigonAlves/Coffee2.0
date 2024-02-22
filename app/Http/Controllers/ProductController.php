@@ -47,4 +47,12 @@ class ProductController extends Controller
 
         return view('products.index', ['products' => $products]);
     }
+
+    public function show(Request $request, $productId)
+    {
+        $product = Product::findOrFail($productId);
+
+
+        return view('products.showProduct', ['product' => $product]);
+    }
 }
