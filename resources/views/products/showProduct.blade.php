@@ -39,5 +39,15 @@
         <div class="col-span-2">
 
         </div>
+
+        <div class="col-span-2">
+            <h2>Reviews</h2>
+            @foreach ($product->reviews as $review)
+                <div class="pb-5">
+                    <p class="pb-1">{{ $review->user_name }}</p>
+                    <p>{{ $review->review }}</p>
+                </div>
+            @endforeach
+        </div>
     </section>
 @endsection
