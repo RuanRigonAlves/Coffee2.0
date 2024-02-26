@@ -41,10 +41,41 @@
         </div>
 
         <div class="col-span-2">
-            <h2>Reviews</h2>
+
+            @auth
+
+                <h2 class="text-2xl mb-4 text-center">Make a review</h2>
+
+                <form method="POST" action="{{ route('products.reviews.store', $product) }}">
+                    @csrf
+
+                    <label for="review">Review</label>
+
+                    <textarea name="review" id="review" required cols="80" rows="3"
+                        class="bg-gray-600 border-2 border-black rounded"></textarea>
+                    <select name="rating" id="rating" required class="bg-gray-600">
+                        <option value="" class="bg-gray-600">Select a Rating</option>
+                        @for ($i = 1; $i <= 5; $i++)
+                            <option class="bg-gray-600" value="{{ $i }}">{{ $i }}</option>
+                        @endfor
+                    </select>
+
+                    <button type="submit" class="btn">Add Review</button>
+                </form>
+            @else
+                <p><a href="{{ route('login.index') }}" class="btn">Login to make a review</a></p>
+
+            @endauth
+
+
+        </div>
+
+        <div class="col-span-2">
+            <h2 class="text-2xl mb-4 text-center">Reviews</h2>
             @foreach ($product->reviews as $review)
                 <div class="pb-5">
                     <p class="pb-1">{{ $review->user_name }}</p>
+                    <p>Rating: {{ $review->rating }}</p>
                     <p>{{ $review->review }}</p>
                 </div>
             @endforeach

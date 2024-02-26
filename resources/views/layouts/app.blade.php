@@ -17,15 +17,37 @@
 
         <header>
             <div
-                class="bg-gradient-to-r from-cyan-800 to-teal-800 py-4 px-1 mt-4 mx-4 rounded-t border-b border-slate-500">
-                <ul class="flex gap-4">
+                class="bg-gradient-to-r from-cyan-800 to-teal-800 py-4 px-1 mt-4 mx-4 rounded-t border-b border-slate-500 flex justify-between">
+
+                <ul class="flex items-center gap-4">
                     <li class="">
-                        <a href="/" class="btn">Big Hoooooooooooome</a>
+                        <a href="/" class="btn px-14">Home</a>
                     </li>
 
                     <li>
-                        <a href="{{ route('products.index') }}" class="btn">Products</a>
+                        <a href="{{ route('products.index') }}" class="btn px-4">Products</a>
                     </li>
+                </ul>
+
+                <ul class="flex items-center gap-4">
+
+                    @if (!auth()->check())
+                        <li>
+                            <a class="btn px-4" href="{{ route('login.index') }}">Login</a>
+                        </li>
+                    @else
+                        <li>
+                            <form action="{{ route('login.logout') }}" method="POST" class="inline">
+                                @csrf
+                                <button type="submit" class="btn px-4">Logout</button>
+                            </form>
+                        </li>
+
+                        <li class="btn px-4">
+                            <a href="">{{ auth()->user()->name }}</a>
+                        </li>
+                    @endif
+
                 </ul>
 
             </div>
