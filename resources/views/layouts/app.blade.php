@@ -17,7 +17,7 @@
 
         <header>
             <div
-                class="bg-gradient-to-r from-cyan-800 to-teal-800 py-4 px-1 mt-4 mx-4 rounded-t border-b border-slate-500 flex justify-between">
+                class="bg-gradient-to-r from-cyan-800 to-teal-800 py-4 px-2 mt-4 mx-4 rounded-t border-b border-slate-500 flex justify-between">
 
                 <ul class="flex items-center gap-4">
                     <li class="">

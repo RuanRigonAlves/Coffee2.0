@@ -9,6 +9,17 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
+        $categoriesFilter = [
+            'food' => 'Food',
+            'drink' => 'Drink',
+            'dessert' => 'Dessert',
+        ];
+        $sortView = [
+            'price' => 'Price',
+            'alphabetical' => 'Alphabetical',
+            'rating' => 'Rating',
+        ];
+
         $products = [];
         $productName = $request->input("product");
         $categories = $request->input("category");
@@ -45,7 +56,11 @@ class ProductController extends Controller
 
         // dd(count($products));
 
-        return view('products.index', ['products' => $products]);
+        return view('products.index', [
+            'products' => $products,
+            'categoriesFilter' => $categoriesFilter,
+            'sort' => $sortView,
+        ]);
     }
 
     public function show(Request $request, $productId)
