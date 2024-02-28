@@ -43,8 +43,8 @@
                             </form>
                         </li>
 
-                        <li class="btn px-4">
-                            <a href="">{{ auth()->user()->name }}</a>
+                        <li>
+                            <a class="btn px-4" href="{{ route('user.show') }}">{{ auth()->user()->name }}</a>
                         </li>
                     @endif
 

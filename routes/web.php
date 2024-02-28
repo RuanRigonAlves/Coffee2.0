@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\UserController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -18,17 +19,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('products', ProductController::class);
+// Route::resource('products', ProductController::class);
 
 Route::get('/', function () {
     return view('home');
+})->name('home');
+
+Route::fallback(function () {
+    return redirect()->route('home');
 });
 
+Route::get('products', [ProductController::class, 'index'])->name('products.index');
+
+Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
+
+
 Route::resource('products.reviews', ReviewsController::class)->scoped(['review' => 'product'])->only(['create', 'store']);
-
-// Route::resource('register', RegisterUserController::class);
-
-// Route::resource('login', LoginUserController::class);
 
 Route::get('register', [RegisterUserController::class, 'index'])->name('register.index');
 
@@ -39,3 +45,5 @@ Route::get('login', [LoginUserController::class, 'index'])->name('login.index');
 Route::post('login', [LoginUserController::class, 'store'])->name('login.store');
 
 Route::post('logout', [LoginUserController::class, 'logout'])->name('login.logout');
+
+Route::get('user', [UserController::class, 'show'])->name('user.show');

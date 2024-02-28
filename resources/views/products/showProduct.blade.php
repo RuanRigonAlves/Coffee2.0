@@ -1,9 +1,6 @@
 @extends('layouts.app')
-@php
-    $productName = $product->name;
-@endphp
 
-@section('title', $productName)
+@section('title', $product->name)
 
 @section('content')
 
