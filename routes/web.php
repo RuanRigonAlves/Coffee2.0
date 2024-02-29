@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartProductsController;
 use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterUserController;
@@ -47,3 +49,7 @@ Route::post('login', [LoginUserController::class, 'store'])->name('login.store')
 Route::post('logout', [LoginUserController::class, 'logout'])->name('login.logout');
 
 Route::get('user', [UserController::class, 'show'])->name('user.show');
+
+Route::get('cart', [CartController::class, 'index'])->name('cart.index');
+
+Route::post('cart/{product}', [CartProductsController::class, 'store'])->name('cart_product.store');

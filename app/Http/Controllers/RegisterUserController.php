@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +44,12 @@ class RegisterUserController extends Controller
         $user = User::create($validatedData);
 
         Auth::login($user);
+
+        $cart = new Cart();
+
+        $cart->user_id = $user->id;
+
+        $cart->save();
 
         $request->session()->regenerate();
 

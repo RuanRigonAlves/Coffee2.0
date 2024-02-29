@@ -37,6 +37,10 @@
                         </li>
                     @else
                         <li>
+                            <a class="btn px-4" href="{{ route('cart.index') }}">Cart</a>
+                        </li>
+
+                        <li>
                             <form action="{{ route('login.logout') }}" method="POST" class="inline">
                                 @csrf
                                 <button type="submit" class="btn px-4">Logout</button>
