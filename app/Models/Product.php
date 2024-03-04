@@ -34,4 +34,36 @@ class Product extends Model
         $this->rating = $averageRating;
         $this->save();
     }
+
+    public static function filterAndSort($productName, $categories, $sort, $order)
+    {
+        $query = self::query();
+
+        if (!empty($productName)) {
+            $query->where('name', 'like', '%' . $productName . '%');
+        }
+
+        if (!empty($categories)) {
+            $query->where(function ($q) use ($categories) {
+                foreach ($categories as $category) {
+                    $q->orWhere('category', $category);
+                }
+            });
+        }
+
+        if (!empty($sort)) {
+            $sortField = match ($sort) {
+                'alphabetical' => 'name',
+                'price' => 'price',
+                'rating' => 'rating',
+                default => null,
+            };
+
+            if ($sortField !== null) {
+                $query->orderBy($sortField, $order);
+            }
+        }
+
+        return $query->paginate(10);
+    }
 }

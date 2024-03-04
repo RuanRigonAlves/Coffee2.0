@@ -12,8 +12,12 @@
         <section>
             <x-sorts.sort-product :sort="$sort" :products="$products" />
 
+            {{ $products->links('pagination::simple-tailwind') }}
+
+
             <x-products-list :products="$products" />
         </section>
     </div>
+
 
 @endsection

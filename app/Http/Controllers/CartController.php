@@ -13,12 +13,10 @@ class CartController extends Controller
     {
         $user = Auth::user();
 
-        $cart = $user->cart()->with('cart_products')->first();
+        $cart = $user->cart()->with('cart_products.product')->first();
 
-        $cartProducts = $cart->cart_products;
+        $cartProducts = optional($cart)->cart_products;
 
-        // dd($cartProducts);
-
-        return view('cartView.index', ['cart' => $cartProducts]);
+        return view('cartView.index', ['cartProducts' => $cartProducts]);
     }
 }

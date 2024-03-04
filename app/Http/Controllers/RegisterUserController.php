@@ -31,7 +31,6 @@ class RegisterUserController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -54,6 +53,5 @@ class RegisterUserController extends Controller
         $request->session()->regenerate();
 
         return redirect()->intended('/');
-        // dd($user);
     }
 }

@@ -14,47 +14,21 @@ class ProductController extends Controller
             'drink' => 'Drink',
             'dessert' => 'Dessert',
         ];
+
         $sortView = [
             'price' => 'Price',
             'alphabetical' => 'Alphabetical',
             'rating' => 'Rating',
         ];
 
-        $products = [];
         $productName = $request->input("product");
         $categories = $request->input("category");
         $sort = $request->input("sort");
         $order = $request->input("order");
 
 
-        $query = Product::query();
-
-        if (!empty($productName)) {
-            $query->where('name', 'like', '%' . $productName . '%');
-        }
-
-        if (!empty($categories)) {
-            $query->where(function ($q) use ($categories) {
-                foreach ($categories as $category) {
-                    $q->orWhere('category', $category);
-                }
-            });
-        }
-
-
-        if (!empty($sort)) {
-            if ($sort == "price") {
-                $query->orderBy("price", $order);
-            } elseif ($sort == "alphabetical") {
-                $query->orderBy("name", $order);
-            } elseif ($sort == "rating") {
-                $query->orderBy("rating", $order);
-            }
-        }
-
-        $products = $query->get();
-
-        // dd(count($products));
+        $products = [];
+        $products = Product::filterAndSort($productName, $categories, $sort, $order);
 
         return view('products.index', [
             'products' => $products,
