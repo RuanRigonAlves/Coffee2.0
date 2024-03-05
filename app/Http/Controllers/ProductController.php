@@ -26,7 +26,6 @@ class ProductController extends Controller
         $sort = $request->input("sort");
         $order = $request->input("order");
 
-
         $products = [];
         $products = Product::filterAndSort($productName, $categories, $sort, $order);
 
@@ -34,6 +33,7 @@ class ProductController extends Controller
             'products' => $products,
             'categoriesFilter' => $categoriesFilter,
             'sort' => $sortView,
+            'selectedCategories' => $categories,
         ]);
     }
 

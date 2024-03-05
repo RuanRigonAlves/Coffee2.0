@@ -29,16 +29,21 @@
     </div>
 
     <div class="flex justify-evenly">
-        <form method="POST" action="{{ route('cart_product.store', $product) }}">
-            @csrf
+
+        @if (auth()->check())
+            <form method="POST" action="{{ route('cart_product.store', $product) }}">
+                @csrf
 
 
-            <label for="quantity">Quantity:</label>
-            <input class="bg-transparent border rounded text-center" type="number" name="quantity" id="quantity"
-                value="1" min="1" max="20">
+                <label for="quantity">Quantity:</label>
+                <input class="bg-transparent border rounded text-center" type="number" name="quantity" id="quantity"
+                    value="1" min="1" max="20">
 
-            <button type="submit" class="btn">Order</button>
-        </form>
+                <button type="submit" class="btn">Order</button>
+            </form>
+        @else
+            <a href="{{ route('login.index') }}" class="btn">Login to Order</a>
+        @endif
     </div>
 
 </div>

@@ -1,3 +1,5 @@
+@props(['categoriesFilter', 'selectedCategories'])
+
 <div>
     <form method="GET" action="{{ route('products.index') }}" class="flex">
         <input class="h-10 text-center rounded bg-slate-500" type="text" name="product" placeholder="search"
@@ -10,7 +12,9 @@
     @foreach ($categoriesFilter as $key => $label)
         <div class="flex items-center">
             <input class="size-5 cursor-pointer" type="checkbox" name="category[]" id="{{ $key }}"
-                value="{{ $key }}"<?php echo isset($_GET['category']) && in_array('{{ $key }}', $_GET['category']) ? 'checked' : ''; ?>>
+                value="{{ $key }}"
+                {{ is_array($selectedCategories ?? null) && in_array($key, $selectedCategories) ? 'checked' : '' }}>
+
             <label for="{{ $key }}"
                 class="text-lg w-24 cursor-pointer pl-1  border-effect">{{ $label }}</label>
         </div>
@@ -19,6 +23,10 @@
     <div class="mt-4">
         <button type="submit" class="btn w-full">Search</button>
     </div>
+
     </form>
-    <button class="mt-1 bg-slate-300 w-full rounded"><a href="{{ route('products.index') }}">Clear</a></button>
+
+    <button class="mt-1 bg-slate-300 w-full rounded">
+        <a href="{{ route('products.index') }}">Clear</a>
+    </button>
 </div>

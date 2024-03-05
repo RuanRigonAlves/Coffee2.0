@@ -4,6 +4,13 @@
 
 @section('content')
 
+    @if (session('success'))
+        <div class="text-green-500">
+            {{ session('success') }}
+        </div>
+    @endif
+
+
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex maiores culpa eaque earum exercitationem suscipit assumenda
     quod deserunt, voluptatum ipsum illo inventore quis tenetur? Modi corrupti corporis vero temporibus consectetur!
     Cumque ea, porro incidunt, ut exercitationem nihil sint voluptates doloribus dignissimos molestias accusantium
