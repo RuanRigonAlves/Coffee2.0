@@ -26,8 +26,8 @@ class ProductController extends Controller
         $sort = $request->input("sort");
         $order = $request->input("order");
 
-        $products = [];
         $products = Product::filterAndSort($productName, $categories, $sort, $order);
+        $products->appends($request->all());
 
         return view('products.index', [
             'products' => $products,

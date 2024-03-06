@@ -15,7 +15,7 @@
             </select>
 
             <textarea name="review" id="review" required cols="50" rows="3"
-                class="bg-gray-600 border-2 border-black rounded mb-2"></textarea>
+                class="bg-gray-600 border-2 border-black rounded mb-2" minlength="4"></textarea>
 
             <button type="submit" class="btn">Add Review</button>
         </form>

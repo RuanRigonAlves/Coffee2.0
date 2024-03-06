@@ -13,6 +13,7 @@
         @if ($paginator->hasMorePages())
             <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="btn w-32 text-center">
                 {!! __('pagination.next') !!}
+
             </a>
         @else
             <span></span>

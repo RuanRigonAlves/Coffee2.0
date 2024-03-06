@@ -1,18 +1,19 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Sorts;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ProductsList extends Component
+class SortProduct extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct(
-        public ?object $products
+        public ?array $sort,
+        public ?object $products,
     ) {
         //
     }
@@ -22,6 +23,6 @@ class ProductsList extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.products-list');
+        return view('components.product-list.sort-product');
     }
 }

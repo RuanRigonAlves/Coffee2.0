@@ -21,6 +21,6 @@ class CategoryForm extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.forms.category-form');
+        return view('components.product-list.category-form');
     }
 }
