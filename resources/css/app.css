@@ -11,6 +11,15 @@
         @apply border-b border-transparent ease-in duration-300 hover:border-slate-300
     }
 
+    .btn-2{
+        @apply bg-gray-500 rounded border-2 border-transparent hover:border-black ease-in duration-300 
+    }
+
+    .flash-success {
+        @apply p-3 text-green-800 bg-green-200 text-center border-2 border-green-800 rounded-lg cursor-pointer transition duration-300 ease-in 
+    }
+
+
 }
 
 html {

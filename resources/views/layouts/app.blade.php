@@ -8,6 +8,12 @@
             rel="stylesheet">
 
         <title>Coffee - @yield('title')</title>
+
+        @yield('head')
+
+        <script src="{{ asset('js/flash-messages.js') }}"></script>
+
+
         @vite('resources/css/app.css')
 
 
