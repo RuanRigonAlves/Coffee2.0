@@ -5,11 +5,8 @@
 @section('content')
 
     @if (session('success'))
-        <div class="text-green-500">
-            {{ session('success') }}
-        </div>
+        <x-flash-messages.success />
     @endif
-
 
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex maiores culpa eaque earum exercitationem suscipit assumenda
     quod deserunt, voluptatum ipsum illo inventore quis tenetur? Modi corrupti corporis vero temporibus consectetur!

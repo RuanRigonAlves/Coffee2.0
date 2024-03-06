@@ -30,6 +30,9 @@ class CartProductsController extends Controller
 
         CartProducts::create($cartProductData);
 
-        return redirect('/products');
+        return redirect()->route('products.show', $product)->with(
+            'success',
+            $data['quantity'] . ' ' . $product->name . ' added to the cart!'
+        );
     }
 }

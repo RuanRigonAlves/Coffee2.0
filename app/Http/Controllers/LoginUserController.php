@@ -25,7 +25,7 @@ class LoginUserController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/')->with('success', 'Logged in');
+            return redirect()->intended('/')->with('success', 'Successfully Logged In');
         }
 
         return back()->withErrors([
@@ -41,6 +41,6 @@ class LoginUserController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Successfully Logged Out');
     }
 }

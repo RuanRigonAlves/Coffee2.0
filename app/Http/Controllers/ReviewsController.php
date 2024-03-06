@@ -40,7 +40,7 @@ class ReviewsController extends Controller
 
         $product->reviews()->create($data);
 
-        return redirect()->route('products.show', $product);
+        return redirect()->route('products.show', $product)->with('success', 'Review added');
     }
 
     /**

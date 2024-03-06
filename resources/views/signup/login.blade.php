@@ -6,14 +6,6 @@
 
     <section>
         <div class="flex flex-col items-center p-4">
-
-            @if (session('success'))
-                <div class="text-green-500">
-                    {{ session('success') }}
-                </div>
-            @endif
-
-
             <div class="border-4 rounded border-black w-fit p-6">
 
                 <div>

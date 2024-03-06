@@ -8,6 +8,7 @@
         <img class="rounded" src="{{ $product->product_image }}" alt="">
     </div>
 
+
     <div>
         <h1 class="text-4xl text-center mb-3">{{ $product->name }}</h1>
 
