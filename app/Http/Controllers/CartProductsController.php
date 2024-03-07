@@ -11,8 +11,6 @@ class CartProductsController extends Controller
 {
     public function store(Request $request, Product $product)
     {
-        // dd($product);
-
         $data =  $request->validate([
             'quantity' => 'required|min:1|max:20|integer'
         ]);
@@ -34,5 +32,37 @@ class CartProductsController extends Controller
             'success',
             $data['quantity'] . ' ' . $product->name . ' added to the cart!'
         );
+    }
+
+    public function update(Request $request)
+    {
+        $cartProductId = $request->input('cart_product_id');
+
+        $validatedData = $request->validate([
+            'quantity' => 'required|min:1|max:20|integer'
+        ]);
+
+        $quantity = $validatedData['quantity'];
+
+        $cartProduct = CartProducts::where('id', $cartProductId)->first();
+        if ($cartProduct) {
+            $cartProduct->quantity = $quantity;
+            $cartProduct->save();
+
+            return back()->with('success', 'Product quantity updated');
+        }
+    }
+
+    public function destroy(Request $request)
+    {
+        $cartProductId = $request->input('product_to_remove');
+
+
+        $cartProduct = CartProducts::where('id', $cartProductId)->first();
+        if ($cartProduct) {
+            $cartProduct->delete();
+
+            return back()->with('success', 'Product Removed From Cart');
+        }
     }
 }

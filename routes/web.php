@@ -53,3 +53,8 @@ Route::get('user', [UserController::class, 'show'])->name('user.show');
 Route::get('cart', [CartController::class, 'index'])->name('cart.index');
 
 Route::post('cart/{product}', [CartProductsController::class, 'store'])->name('cart_product.store');
+
+
+Route::post('cart', [CartProductsController::class, 'update'])->name('cart_product.update');
+
+Route::delete('cart', [CartProductsController::class, 'destroy'])->name('cart_product.destroy');

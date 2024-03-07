@@ -15,8 +15,14 @@ class CartController extends Controller
 
         $cart = $user->cart()->with('cart_products.product')->first();
 
-        $cartProducts = optional($cart)->cart_products;
+        $cartProducts = optional($cart)->cart_products ?? collect();
 
-        return view('cartView.index', ['cartProducts' => $cartProducts]);
+
+        $totalValue = Cart::totalCartValue($cartProducts);
+
+        return view('cartView.index', [
+            'cartProducts' => $cartProducts,
+            'totalValue' => $totalValue,
+        ]);
     }
 }

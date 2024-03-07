@@ -22,4 +22,17 @@ class Cart extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static function totalCartValue($cartProducts)
+    {
+        $totalValue = 0;
+
+        foreach ($cartProducts as $cartProduct) {
+            if ($cartProduct->product && $cartProduct->quantity) {
+                $totalValue += $cartProduct->product->price * $cartProduct->quantity;
+            }
+        };
+
+        return $totalValue;
+    }
 }
