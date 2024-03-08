@@ -1,4 +1,4 @@
-<ul class="flex flex-wrap justify-around gap-2 h-4/5 overflow-auto">
+<ul class="flex flex-wrap gap-2 h-4/5 overflow-auto">
     @forelse ($products as $product)
         <li class="w-80 h-80 mb-5 bg-gray-500 rounded border border-black flex">
             <a href="{{ route('products.show', $product->id) }}" class="flex flex-col justify-evenly w-full h-full">

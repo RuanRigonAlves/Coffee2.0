@@ -2,8 +2,8 @@
 
 <div>
     <form method="GET" action="{{ route('products.index') }}" class="flex">
-        <input class="h-10 text-center rounded bg-slate-500" type="text" name="product" placeholder="search"
-            value="{{ request('product') }}">
+        <input class="h-8 text-center rounded bg-transparent border-2 border-gray-500" type="text" name="product"
+            placeholder="Product Name" value="{{ request('product') }}">
 </div>
 
 <div>
@@ -21,12 +21,12 @@
     @endforeach
 
     <div class="mt-4">
-        <button type="submit" class="btn w-full">Search</button>
+        <button type="submit" class="btn w-full">Apply</button>
     </div>
 
     </form>
 
-    <button class="mt-1 bg-slate-300 w-full rounded">
+    <button class="mt-1 btn w-full">
         <a href="{{ route('products.index') }}">Clear</a>
     </button>
 </div>

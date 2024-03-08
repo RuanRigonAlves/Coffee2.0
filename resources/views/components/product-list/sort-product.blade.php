@@ -1,5 +1,5 @@
-<div class="flex justify-around items-center ">
-    <ul class=" flex py-4 w-full">
+<div class="flex justify-around items-center">
+    <ul class=" flex py-2 w-full pl-2">
         <li>
             <p>Sort by:</p>
         </li>
@@ -24,6 +24,6 @@
         @endforeach
 
     </ul>
-    <p class="flex py-4 w-80 mr-1 text-sm justify-end">Products Found: <span>{{ count($products) }}</span>
-    </p>
+    {{-- <p class="flex py-4 w-80 mr-1 text-sm justify-end">Products Found: <span>{{ count($products) }}</span>
+    </p> --}}
 </div>

@@ -6,8 +6,7 @@
 
     <section>
         <div class="flex flex-col items-center p-4">
-            <div class="border-4 rounded border-black w-fit p-6">
-
+            <div class=" border-2 border-amber-500 rounded-lg w-fit p-6">
                 <div>
                     @error('noMatch')
                         <span class="text-red-500">{{ $message }}</span>

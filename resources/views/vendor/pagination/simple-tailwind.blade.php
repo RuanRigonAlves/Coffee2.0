@@ -4,14 +4,14 @@
         @if ($paginator->onFirstPage())
             <span></span>
         @else
-            <a href="{{ $paginator->previousPageUrl() }}" rel="prev" class=" btn w-32 text-center">
+            <a href="{{ $paginator->previousPageUrl() }}" rel="prev" class=" btn-2 w-32 text-center">
                 {!! __('pagination.previous') !!}
             </a>
         @endif
 
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
-            <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="btn w-32 text-center">
+            <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="btn-2 w-32 text-center">
                 {!! __('pagination.next') !!}
 
             </a>

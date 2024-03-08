@@ -8,19 +8,21 @@
     @if (session('success'))
         <x-flash-messages.success />
     @endif
-    <section class="grid grid-cols-2">
-        <div class="flex flex-col gap-3">
-            @foreach ($cartProducts as $cartProduct)
-                <div class="mb-4 flex gap-4 p-2">
-                    <div class="relative">
-                        <h2 class="absolute w-full text-center">{{ $cartProduct->product->name }}</h2>
+    <div>
+        <p class="text-xl">Cart Total : $ {{ $totalValue }}</p>
+    </div>
+    <section class="grid grid-cols-3">
+        @foreach ($cartProducts as $cartProduct)
+            <div class="flex gap-4 py-2">
+                <div class="relative">
+                    <h2 class="absolute w-full text-center">{{ $cartProduct->product->name }}</h2>
 
-                        <img src="{{ $cartProduct->product->product_image }}" class="w-40">
-                    </div>
+                    <img src="{{ $cartProduct->product->product_image }}" class="w-44">
+                </div>
 
-
+                <div class="flex flex-col justify-between gap-2">
                     <form method="POST" action="{{ route('cart_product.update') }}"
-                        id="quantityUpdateForm-{{ $cartProduct->id }}">
+                        id="quantityUpdateForm-{{ $cartProduct->id }}" class="m-0">
                         @csrf
                         <div>
                             <label id="quantityLabel">Quantity:</label>
@@ -39,25 +41,22 @@
 
                     <div>
                         <p>
-                            Total: {{ $cartProduct->product->price * $cartProduct->quantity }}
+                            $ {{ $cartProduct->product->price * $cartProduct->quantity }}
                         </p>
                     </div>
 
                     <div>
-                        <form method="POST" action="{{ route('cart_product.destroy') }}">
+                        <form method="POST" action="{{ route('cart_product.destroy') }}" class="m-0">
                             @csrf
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="product_to_remove" value="{{ $cartProduct->id }}">
-                            <button type="submit" class="btn"> Remove</button>
+                            <button type="submit" class="btn-2"> Remove</button>
                         </form>
                     </div>
                 </div>
-        </div>
+            </div>
         @endforeach ()
     </section>
-    <div>
-        <p>Cart Total: {{ $totalValue }}</p>
-    </div>
 
 
 @endsection

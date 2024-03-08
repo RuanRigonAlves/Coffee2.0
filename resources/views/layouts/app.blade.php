@@ -6,6 +6,7 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
             rel="stylesheet">
+        <link rel="icon" href="{{ asset('coffee-icon.svg') }}">
 
         <title>Coffee - @yield('title')</title>
 
@@ -19,20 +20,30 @@
 
     </head>
 
-    <body class="bg-gradient-to-r from-cyan-900 to-teal-900">
+    <body class="secondary-bg">
 
-        <header>
-            <div
-                class="bg-gradient-to-r from-cyan-800 to-teal-800 py-4 px-2 mt-4 mx-4 rounded-t border-b border-slate-500 flex justify-between">
+        <header class="text-xl">
+            <div class="main-bg py-2 px-12 mt-4 mx-4 rounded-t-lg border-b border-amber-500 flex justify-between">
 
                 <ul class="flex items-center gap-4">
-                    <li class="">
-                        <a href="/" class="btn px-14">Home</a>
+                    <li>
+                        <a href="/" class="btn w-52 text-center flex items-center">
+                            <x-icons.coffee-icon class="h-10 stroke-amber-500 " />
+                            <p class="text-center w-full">
+                                Home
+                            </p>
+                        </a>
                     </li>
 
                     <li>
                         <a href="{{ route('products.index') }}" class="btn px-4">Products</a>
                     </li>
+                    @if (auth()->check())
+                        <li>
+                            <a class="btn px-4" href="{{ route('cart.index') }}">Cart</a>
+                        </li>
+                    @endif
+
                 </ul>
 
                 <ul class="flex items-center gap-4">
@@ -42,10 +53,6 @@
                             <a class="btn px-4" href="{{ route('login.index') }}">Login</a>
                         </li>
                     @else
-                        <li>
-                            <a class="btn px-4" href="{{ route('cart.index') }}">Cart</a>
-                        </li>
-
                         <li>
                             <form action="{{ route('login.logout') }}" method="POST" class="inline">
                                 @csrf
@@ -64,7 +71,7 @@
         </header>
 
 
-        <section class="bg-gradient-to-r from-cyan-800 to-teal-800 mx-4 mb-4 ">
+        <section class="main-bg mx-4 mb-4 px-12 rounded-b-lg h-90 overflow-auto">
             @yield('content')
         </section>
     </body>

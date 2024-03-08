@@ -1,6 +1,6 @@
 <div class="mb-4">
     @auth
-        <h2 class="text-2xl mb-2 text-center">Make a review</h2>
+        <h2 class="text-2xl my-2 text-center">Make a review</h2>
 
         <div>
             <form method="POST" action="{{ route('products.reviews.store', $product) }}" class="flex flex-col w-fill">
@@ -19,7 +19,7 @@
                     <textarea name="review" id="review" required cols="" rows="2"
                         class="bg-gray-600 border-2 border-black rounded col-span-9" minlength="4"></textarea>
 
-                    <button type="submit" class="btn">Add Review</button>
+                    <button type="submit" class="btn-2">Add Review</button>
                 </div>
             </form>
         </div>

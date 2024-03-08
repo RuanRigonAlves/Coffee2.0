@@ -4,14 +4,14 @@
 
 @section('content')
 
-    <section class="p-2">
+    <section class="py-1">
         @if (session('success'))
             <x-flash-messages.success />
         @endif
 
         <x-product-show.product-info :product="$product" />
     </section>
-    <section class="px-2">
+    <section>
 
         <x-product-show.review-form :product="$product" />
 

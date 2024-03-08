@@ -7,7 +7,7 @@
     <section>
 
         <div class="flex flex-col items-center p-4">
-            <div class="border-4 rounded border-black w-fit p-6">
+            <div class="border-2 rounded-lg border-amber-500 w-fit p-6">
                 <form method="POST" action="{{ route('register.store') }}" class="flex flex-col gap-6 items-center">
                     @csrf
 

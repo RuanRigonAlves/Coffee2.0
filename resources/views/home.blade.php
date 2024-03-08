@@ -32,17 +32,6 @@
     Explicabo cupiditate omnis laboriosam quis modi eos commodi perferendis, quam a amet beatae perspiciatis, porro illo
     accusamus eaque nisi temporibus vel voluptatum nam, officia deserunt blanditiis. Doloribus a quibusdam dicta.
     Pariatur eos maxime qui aliquam vitae aperiam incidunt magni labore commodi minus? Corporis eaque pariatur explicabo
-    quae voluptatibus impedit voluptate enim laudantium repellat mollitia nihil eligendi earum, cumque minima beatae.
-    Optio mollitia commodi dolore voluptate harum omnis necessitatibus ea aliquam veritatis illo! Laboriosam deserunt
-    voluptatum non dignissimos rerum debitis quibusdam eos cum sequi. Ducimus error necessitatibus non cupiditate, tempora
-    pariatur.
-    Voluptas aperiam accusamus doloremque vel odit quisquam. Dolorum ratione aperiam, asperiores voluptas nihil, deserunt
-    ullam nam illo laborum ad, nemo totam quisquam atque rerum amet soluta! Exercitationem corrupti optio similique.
-    Aliquam vitae ut ipsa. Eveniet minus in tempore sit! Itaque laborum nisi fuga distinctio? Animi cum, veritatis et
-    voluptas quis harum illum quas asperiores repellat quia accusamus ullam, quidem dignissimos.
-    Ratione nemo deleniti nulla voluptas, et odio ad. Architecto, quaerat veritatis. Eos adipisci quia repellat dolorem
-    rerum velit harum modi sit, ipsum explicabo, deleniti consequatur amet necessitatibus voluptates sequi asperiores!
-    In explicabo iusto amet ea repellendus, consectetur ratione sed! Aliquid in eligendi doloribus. Quam doloribus
-    voluptatum molestias sunt inventore, dolorem sit consectetur id illum. Pariatur doloribus veritatis corporis explicabo!
+
 
 @endsection
