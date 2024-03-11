@@ -8,7 +8,8 @@
         <x-flash-messages.success />
     @endif
 
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex maiores culpa eaque earum exercitationem suscipit assumenda
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex maiores culpa eaque aearum exercitationem suscipit
+    assumenda
     quod deserunt, voluptatum ipsum illo inventore quis tenetur? Modi corrupti corporis vero temporibus consectetur!
     Cumque ea, porro incidunt, ut exercitationem nihil sint voluptates doloribus dignissimos molestias accusantium
     aspernatur tenetur voluptate, perferendis earum neque corrupti repellat modi commodi eaque excepturi. Ipsa voluptates
