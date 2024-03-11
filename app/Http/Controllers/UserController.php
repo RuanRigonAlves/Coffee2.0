@@ -13,6 +13,7 @@ class UserController extends Controller
 
         $user = Auth::user();
 
+        $user->load("userInfo");
 
         return view('user.userShow', [
             'user' => $user,

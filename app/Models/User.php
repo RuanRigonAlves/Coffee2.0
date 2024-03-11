@@ -24,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'has_address'
     ];
 
     /**
@@ -49,6 +50,11 @@ class User extends Authenticatable
     public function cart()
     {
         return $this->hasOne(Cart::class);
+    }
+
+    public function userInfo()
+    {
+        return $this->hasOne(UserInfo::class);
     }
 
     protected static function booted()

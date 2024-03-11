@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserInfoController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -58,3 +59,11 @@ Route::post('cart/{product}', [CartProductsController::class, 'store'])->name('c
 Route::post('cart', [CartProductsController::class, 'update'])->name('cart_product.update');
 
 Route::delete('cart', [CartProductsController::class, 'destroy'])->name('cart_product.destroy');
+
+Route::get('user_info', [UserInfoController::class, 'index'])->name('user_info.index');
+
+Route::post('user_info', [UserInfoController::class, 'store'])->name('user_info.store');
+
+Route::get('/user/edit', [UserInfoController::class, 'edit'])->name('user_info.edit');
+
+Route::post('/user/edit', [UserInfoController::class, 'update'])->name('user_info.update');
