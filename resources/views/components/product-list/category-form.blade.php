@@ -2,7 +2,7 @@
 
 <div>
     <form method="GET" action="{{ route('products.index') }}" class="flex">
-        <input class="h-8 text-center rounded bg-transparent border-2 border-gray-500" type="text" name="product"
+        <input class="h-8 text-center rounded bg-transparent border-2 border-gray-500 w-52" type="text" name="product"
             placeholder="Product Name" value="{{ request('product') }}">
 </div>
 

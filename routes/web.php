@@ -66,4 +66,4 @@ Route::post('user_info', [UserInfoController::class, 'store'])->name('user_info.
 
 Route::get('/user/edit', [UserInfoController::class, 'edit'])->name('user_info.edit');
 
-Route::post('/user/edit', [UserInfoController::class, 'update'])->name('user_info.update');
+Route::put('/user/edit', [UserInfoController::class, 'update'])->name('user_info.update');

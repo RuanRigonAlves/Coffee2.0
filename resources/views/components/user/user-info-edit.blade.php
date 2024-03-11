@@ -2,6 +2,7 @@
     <h3 class="text-2xl text-center">Update User Info</h3>
     <form method="POST" action="{{ route('user_info.update') }}" class="flex flex-col items-center text-center">
         @csrf
+        @method('PUT')
 
         <label for="country">Country</label>
         <input type="text" value="{{ $user->userInfo->country }}" required name="country" id="country"
