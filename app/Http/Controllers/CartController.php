@@ -18,11 +18,24 @@ class CartController extends Controller
         $cartProducts = optional($cart)->cart_products ?? collect();
 
 
-        $totalValue = Cart::totalCartValue($cartProducts);
+        $totalValue = static::totalCartValue($cartProducts);
 
         return view('cartView.index', [
             'cartProducts' => $cartProducts,
             'totalValue' => $totalValue,
         ]);
+    }
+
+    private static function totalCartValue($cartProducts)
+    {
+        $totalValue = 0;
+
+        foreach ($cartProducts as $cartProduct) {
+            if ($cartProduct->product && $cartProduct->quantity) {
+                $totalValue += $cartProduct->product->price * $cartProduct->quantity;
+            }
+        };
+
+        return $totalValue;
     }
 }
