@@ -3,6 +3,8 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CartProductsController;
 use App\Http\Controllers\LoginUserController;
+use App\Http\Controllers\OrderingController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\ReviewsController;
@@ -55,8 +57,11 @@ Route::get('cart', [CartController::class, 'index'])->name('cart.index');
 
 Route::post('cart/{product}', [CartProductsController::class, 'store'])->name('cart_product.store');
 
-
 Route::post('cart', [CartProductsController::class, 'update'])->name('cart_product.update');
+
+Route::post('order', [OrdersController::class, 'store'])->name('order.store');
+
+Route::get('order', [OrdersController::class, 'index'])->name('order.index');
 
 Route::delete('cart', [CartProductsController::class, 'destroy'])->name('cart_product.destroy');
 
