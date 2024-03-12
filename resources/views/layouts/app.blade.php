@@ -42,6 +42,10 @@
                         <li>
                             <a class="btn px-4" href="{{ route('cart.index') }}">Cart</a>
                         </li>
+
+                        <li>
+                            <a class="btn px-4" href="{{ route('order.index') }}">My Orders</a>
+                        </li>
                     @endif
 
                 </ul>

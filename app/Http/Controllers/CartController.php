@@ -17,7 +17,6 @@ class CartController extends Controller
 
         $cartProducts = optional($cart)->cart_products ?? collect();
 
-
         $totalValue = static::totalCartValue($cartProducts);
 
         return view('cartView.index', [
