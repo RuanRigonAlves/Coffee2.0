@@ -71,4 +71,9 @@ class Product extends Model
 
         return $query->paginate(10);
     }
+
+    public static function getProductWithReviews($productId)
+    {
+        return Product::with('reviews')->findOrFail($productId);
+    }
 }

@@ -22,4 +22,26 @@ class Cart extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static function getCartWithProductsByUser($user)
+    {
+        return $user->cart()->with('cart_products.product')->first();
+    }
+
+    public static function totalCartValue($cartProducts)
+    {
+        $totalValue = 0;
+
+        foreach ($cartProducts as $cartProduct) {
+            if ($cartProduct->product && $cartProduct->quantity) {
+                $totalValue += $cartProduct->product->price * $cartProduct->quantity;
+            }
+        }
+        return $totalValue;
+    }
+
+    public static function getOrCreateCart($userId)
+    {
+        return static::firstOrCreate(['user_id' => $userId]);
+    }
 }

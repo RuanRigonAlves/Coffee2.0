@@ -13,28 +13,15 @@ class CartController extends Controller
     {
         $user = Auth::user();
 
-        $cart = $user->cart()->with('cart_products.product')->first();
+        $cart = Cart::getCartWithProductsByUser($user);
 
         $cartProducts = optional($cart)->cart_products ?? collect();
 
-        $totalValue = static::totalCartValue($cartProducts);
+        $totalValue = Cart::totalCartValue($cartProducts);
 
         return view('cartView.index', [
             'cartProducts' => $cartProducts,
             'totalValue' => $totalValue,
         ]);
-    }
-
-    private static function totalCartValue($cartProducts)
-    {
-        $totalValue = 0;
-
-        foreach ($cartProducts as $cartProduct) {
-            if ($cartProduct->product && $cartProduct->quantity) {
-                $totalValue += $cartProduct->product->price * $cartProduct->quantity;
-            }
-        };
-
-        return $totalValue;
     }
 }
