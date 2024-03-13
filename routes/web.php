@@ -3,7 +3,6 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CartProductsController;
 use App\Http\Controllers\LoginUserController;
-use App\Http\Controllers\OrderingController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterUserController;

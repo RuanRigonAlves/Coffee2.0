@@ -18,6 +18,11 @@ class Product extends Model
     ];
 
 
+    public function orders()
+    {
+        return $this->hasMany(Orders::class);
+    }
+
     public function reviews()
     {
         return $this->hasMany(Reviews::class);
