@@ -11,22 +11,13 @@ class CartProductsController extends Controller
 {
     public function store(Request $request, Product $product)
     {
-        $data =  $request->validate([
-            'quantity' => 'required|min:1|max:20|integer'
-        ]);
+        $data =  $this->validateQuanitity($request);
 
         $userId = auth()->id();
 
-        $cart = Cart::firstOrCreate(['user_id' => $userId]);
+        $cart = Cart::getOrCreateCart($userId);
 
-
-        $cartProductData = [
-            'quantity' => $data['quantity'],
-            'product_id' => $product->id,
-            'cart_id' => $cart->id,
-        ];
-
-        CartProducts::create($cartProductData);
+        CartProducts::addProduct($product, $data['quantity'], $cart->id);
 
         return redirect()->route('products.show', $product)->with(
             'success',
@@ -38,31 +29,40 @@ class CartProductsController extends Controller
     {
         $cartProductId = $request->input('cart_product_id');
 
-        $validatedData = $request->validate([
-            'quantity' => 'required|min:1|max:20|integer'
-        ]);
+        $validatedData = $this->validateQuanitity($request);
 
         $quantity = $validatedData['quantity'];
 
-        $cartProduct = CartProducts::where('id', $cartProductId)->first();
-        if ($cartProduct) {
-            $cartProduct->quantity = $quantity;
-            $cartProduct->save();
+        $cartProduct = CartProducts::getCartProduct($cartProductId);
 
-            return back()->with('success', 'Product quantity updated');
+        if (!$cartProduct) {
+            return back()->with('error', 'No product found in the database');
         }
+
+        CartProducts::updateQuantity($cartProduct, $quantity);
+
+        return back()->with('success', 'Product quantity updated');
     }
 
     public function destroy(Request $request)
     {
         $cartProductId = $request->input('product_to_remove');
 
+        $cartProduct = CartProducts::getCartProduct($cartProductId);
 
-        $cartProduct = CartProducts::where('id', $cartProductId)->first();
-        if ($cartProduct) {
-            $cartProduct->delete();
-
-            return back()->with('success', 'Product Removed From Cart');
+        if (!$cartProduct) {
+            return back()->with('error', 'No product found in the database');
         }
+
+        CartProducts::removeFromCart($cartProduct);
+
+        return back()->with('success', 'Product Removed From Cart');
+    }
+
+    protected function validateQuanitity(Request $request)
+    {
+        return $request->validate([
+            'quantity' => 'required|min:1|max:20|integer',
+        ]);
     }
 }

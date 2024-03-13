@@ -31,4 +31,12 @@ class Reviews extends Model
             $review->product->updateAverageRating();
         });
     }
+
+    public static function createReview($user, $product, $data)
+    {
+        $data['user_id'] = $user->id;
+        $data['user_name'] = $user->name;
+
+        $product->reviews()->create($data);
+    }
 }

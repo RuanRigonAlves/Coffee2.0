@@ -67,4 +67,28 @@ class User extends Authenticatable
             $cart->save();
         });
     }
+
+    public static function loginUser($request)
+    {
+        $request->session()->regenerate();
+    }
+
+    public static function logoutUser($request)
+    {
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+    }
+
+
+    public static function saveUserAddress($user)
+    {
+        $user->has_address = true;
+        $user->save();
+    }
+
+    public static function updateUserAddress($user, $validatedData)
+    {
+        $user->userInfo->update($validatedData);
+    }
 }
