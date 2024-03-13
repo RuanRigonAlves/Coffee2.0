@@ -4,10 +4,10 @@
 
 @section('content')
 
-    <div>
-        @foreach ($orders as $product)
-            <p>{{ $product }}</p>
-        @endforeach
-    </div>
+    @if (session('success'))
+        <x-flash-messages.success />
+    @endif
+
+    <x-my-orders.ordered :products="$products" />
 
 @endsection

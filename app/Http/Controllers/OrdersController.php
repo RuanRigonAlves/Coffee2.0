@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CartProducts;
 use App\Models\Orders;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -12,18 +13,31 @@ class OrdersController extends Controller
     {
         $user = auth()->user();
 
-        $orders = Orders::where("user_id", $user->id)->first();
+        $orders = Orders::where("user_id", $user->id)->latest()->get();
 
-        $products_ordered = unserialize($orders->products_ordered);
+        $products = [];
 
-        return view("orders.order_index", ["orders" => $products_ordered]);
+        foreach ($orders as $order) {
+            $products_ordered = unserialize($order->products_ordered);
+            if ($products_ordered) {
+                foreach ($products_ordered as $orderedProduct) {
+                    $product = Product::find($orderedProduct->product_id);
+                    if ($product) {
+                        $product->quantity = $orderedProduct->quantity;
+                        $products[] = $product;
+                    }
+                }
+            }
+        }
+
+        return view("orders.order_index", [
+            "products" => $products
+        ]);
     }
 
     public function store()
     {
-
         $user = auth()->user();
-
 
         $user->load('cart.cart_products');
 
@@ -46,6 +60,6 @@ class OrdersController extends Controller
 
         CartProducts::where('cart_id', $cartId)->delete();
 
-        return redirect()->back()->with('success', 'Ordered Successfully');
+        return redirect()->route('order.index')->with('success', 'Ordered Successfully');
     }
 }
