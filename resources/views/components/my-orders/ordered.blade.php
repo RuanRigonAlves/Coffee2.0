@@ -9,8 +9,7 @@
                 <p> {{ $product->name }}</p>
 
                 <p>
-                    is illum possimus vel tenetur illo perspiciatis sint rerum, eligendi sunt architecto veniam
-                    recusandae delectus rem, tempore corrupti.
+                    {{ $product->description }}
                 </p>
             </div>
 

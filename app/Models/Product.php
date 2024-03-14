@@ -70,7 +70,7 @@ class Product extends Model
             }
         }
 
-        return $query->paginate(10);
+        return $query->paginate(12);
     }
 
     public static function getProductWithReviews($productId)

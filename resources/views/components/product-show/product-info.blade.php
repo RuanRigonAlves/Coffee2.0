@@ -25,8 +25,23 @@
 
             <div class="flex justify-between text-xl flex-wrap">
                 <div class="flex flex-col justify-evenly">
-                    <p class="">Price: <span id="product-price">{{ $product->price }}</span></p>
-                    <p>Rating: {{ $product->rating }}</p>
+                    <div class="flex items-center">
+                        <span class="text-green-400">
+                            <x-icons.dollar />
+                        </span>
+                        <span>
+                            {{ $product->price }}
+                        </span>
+                    </div>
+
+                    <div class="flex items-center">
+                        <span class="text-yellow-500">
+                            <x-icons.star />
+                        </span>
+                        <span>
+                            {{ $product->rating }}
+                        </span>
+                    </div>
                 </div>
 
                 <div class="flex flex-col justify-evenly ">
@@ -41,7 +56,11 @@
                         </form>
 
                         <div>
-                            <p>Total: <span id="total-price">{{ $product->price }}</span></p>
+                            <p>Total:$
+                                <span id="total-price">
+                                    {{ $product->price }}
+                                </span>
+                            </p>
                         </div>
                     @else
                         <a href="{{ route('login.index') }}" class="btn">Login to Order</a>

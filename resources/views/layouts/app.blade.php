@@ -20,10 +20,10 @@
 
     </head>
 
-    <body class="secondary-bg">
+    <body class="secondary-bg overflow-hidden">
 
         <header class="text-xl">
-            <div class="main-bg py-2 px-12 mt-4 mx-4 rounded-t-lg border-b border-amber-500 flex justify-between">
+            <div class="main-bg py-2 px-6 border-b border-amber-500 flex justify-between">
 
                 <ul class="flex items-center gap-4">
                     <li>
@@ -74,8 +74,7 @@
             </div>
         </header>
 
-
-        <section class="main-bg mx-4 px-12 rounded-b-lg h-90">
+        <section class="main-bg px-6 h-full overflow-auto pb-20">
             @yield('content')
         </section>
     </body>
