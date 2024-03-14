@@ -5,7 +5,7 @@
     @foreach ($cartProducts as $cartProduct)
         <div class="flex p-2 mb-4 justify-between border border-stone-700 rounded-xl">
             <div>
-                <img src="{{ $cartProduct->product->product_image }}" class="w-64">
+                <img src="{{ asset('storage/' . $cartProduct->product->product_image) }}" class="w-64">
             </div>
 
             <div class="ml-2 flex flex-col gap-4">

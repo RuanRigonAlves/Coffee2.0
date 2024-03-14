@@ -54,4 +54,31 @@ class UserInfoController extends Controller
 
         return redirect()->route('user.show')->with('success', 'Address Updated');
     }
+
+    public function isAdmin(Request $request)
+    {
+        $user = auth()->user();
+
+        $isAdmin = $request->input('is_admin');
+
+        if (!$isAdmin) {
+            User::updateUserPermission($user, $isAdmin);
+            return back()->with('success', 'You are now a User');
+        }
+
+        User::updateUserPermission($user, $isAdmin);
+        return back()->with('success', 'You are now a Admin');
+    }
+
+    public function addProductPage(Request $request)
+    {
+        $user = auth()->user();
+
+
+        if (!$user->is_admin) {
+            return back()->with('error', 'you are not a admin');
+        }
+
+        return view('user.user-product-create', ['user' => $request]);
+    }
 }

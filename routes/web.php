@@ -71,3 +71,9 @@ Route::post('user_info', [UserInfoController::class, 'store'])->name('user_info.
 Route::get('/user/edit', [UserInfoController::class, 'edit'])->name('user_info.edit');
 
 Route::put('/user/edit', [UserInfoController::class, 'update'])->name('user_info.update');
+
+Route::patch('user/isAdmin', [UserInfoController::class, 'isAdmin'])->name('user_info.isAdmin');
+
+Route::get('user/addProduct', [UserInfoController::class, 'addProductPage'])->name('user_info.addProductPage');
+
+Route::post('user/addProduct', [ProductController::class, 'create'])->name('product.create');

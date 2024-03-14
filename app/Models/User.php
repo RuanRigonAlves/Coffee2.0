@@ -91,4 +91,10 @@ class User extends Authenticatable
     {
         $user->userInfo->update($validatedData);
     }
+
+    public static function updateUserPermission($user, $bool)
+    {
+        $user->is_admin = $bool;
+        $user->save();
+    }
 }
