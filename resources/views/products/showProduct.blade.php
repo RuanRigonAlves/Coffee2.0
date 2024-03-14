@@ -4,18 +4,19 @@
 
 @section('content')
 
-    <section class="py-1">
-        @if (session('success'))
-            <x-flash-messages.success />
-        @endif
+    <section class="h-full overflow-auto">
+        <section class="py-1">
+            @if (session('success'))
+                <x-flash-messages.success />
+            @endif
 
-        <x-product-show.product-info :product="$product" />
+            <x-product-show.product-info :product="$product" />
+        </section>
+        <section>
+
+            <x-product-show.review-form :product="$product" />
+
+            <x-product-show.reviews-list :product="$product" />
+        </section>
     </section>
-    <section>
-
-        <x-product-show.review-form :product="$product" />
-
-        <x-product-show.reviews-list :product="$product" />
-    </section>
-
 @endsection

@@ -1,36 +1,47 @@
-<section class="grid grid-cols-3">
-    @foreach ($cartProducts as $cartProduct)
-        <div class="flex gap-4 py-2">
-            <div class="relative">
-                <h2 class="absolute w-full text-center">{{ $cartProduct->product->name }}</h2>
+<h2 class="text-2xl text-center my-2">My Cart</h2>
 
-                <img src="{{ $cartProduct->product->product_image }}" class="w-44">
+
+<div class="h-full overflow-auto mt-1 pr-1">
+    @foreach ($cartProducts as $cartProduct)
+        <div class="flex p-2 mb-4 justify-between border border-stone-700 rounded-xl">
+            <div>
+                <img src="{{ $cartProduct->product->product_image }}" class="w-64">
             </div>
 
-            <div class="flex flex-col justify-between gap-2">
+            <div class="ml-2 flex flex-col gap-4">
+                <p> {{ $cartProduct->product->name }}</p>
+
+                <p>is illum possimus vel tenetur illo perspiciatis sint rerum, eligendi sunt architecto veniam
+                    recusandae delectus rem, tempore corrupti.
+                </p>
+            </div>
+
+            <div class="flex flex-col gap-3 w-52 items-end pr-2 justify-between">
                 <form method="POST" action="{{ route('cart_product.update') }}"
-                    id="quantityUpdateForm-{{ $cartProduct->id }}" class="m-0">
+                    id="quantityUpdateForm-{{ $cartProduct->id }}" class="m-0 w-full">
                     @csrf
-                    <div>
+                    <div class="flex items-center justify-between">
                         <label id="quantityLabel">Quantity:</label>
                         <input type="number" name="quantity" id="quantityInput-{{ $cartProduct->id }}"
                             value="{{ $cartProduct->quantity }}" min="1" max="20"
-                            class="bg-transparent w-12">
+                            class="bg-transparent w-12 btn-2 text-center">
                     </div>
                     <input type="hidden" name="cart_product_id" value="{{ $cartProduct->id }}">
                 </form>
 
+                <div class="flex items-center justify-between w-full">
+                    <p>Total Price:</p>
+
+                    <span class="btn-2 w-12">
+                        {{ $cartProduct->product->price * $cartProduct->quantity }}
+                        <span>
+                </div>
                 <script>
                     document.getElementById("quantityInput-{{ $cartProduct->id }}").addEventListener('change', function() {
                         document.getElementById('quantityUpdateForm-{{ $cartProduct->id }}').submit();
                     });
                 </script>
 
-                <div>
-                    <p>
-                        $ {{ $cartProduct->product->price * $cartProduct->quantity }}
-                    </p>
-                </div>
 
                 <div>
                     <form method="POST" action="{{ route('cart_product.destroy') }}" class="m-0">
@@ -43,4 +54,4 @@
             </div>
         </div>
     @endforeach ()
-</section>
+</div>

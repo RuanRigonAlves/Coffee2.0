@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="flex gap-2 h-5/6 ">
+    <div class="flex gap-2 h-full">
         <section class="w-52 border-slate-500 py-2">
 
             <x-product-list.category-form :categoriesFilter="$categoriesFilter" :selectedCategories="$selectedCategories" />
