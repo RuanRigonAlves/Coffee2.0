@@ -8,6 +8,11 @@
         <x-flash-messages.success />
     @endif
 
-    <x-my-orders.ordered :products="$products" />
+    <section class="h-full">
+        <h2 class="text-2xl text-center mb-2">My Orders</h2>
+
+        <x-my-orders.ordered :products="$products" />
+
+    </section>
 
 @endsection

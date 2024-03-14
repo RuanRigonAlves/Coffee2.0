@@ -1,21 +1,19 @@
-<div>
+<div class="overflow-auto h-90 mt-1 pr-1">
     @foreach ($products as $product)
-        <div class="flex my-4">
-            <div class="w-36">
-                <img src="{{ $product->product_image }}">
+        <div class="flex p-2 mb-4 border border-stone-700 rounded-xl">
+            <div>
+                <img src="{{ $product->product_image }}" class="w-64">
             </div>
 
-            <div class="flex flex-col ml-2">
-                <div>
-                    <h2 class="text-center">{{ $product->name }}</h2>
-                </div>
+            <div class="ml-2 flex flex-col gap-4">
+                <p> {{ $product->name }}</p>
 
-                <div class="flex flex-col">
-                    <p>Price:{{ $product->price }}</p>
-                    <p>Quantity: {{ $product->quantity }}</p>
-                    <p>Total: {{ $product->price * $product->quantity }}</p>
-                </div>
+                <p>
+                    is illum possimus vel tenetur illo perspiciatis sint rerum, eligendi sunt architecto veniam
+                    recusandae delectus rem, tempore corrupti.
+                </p>
             </div>
+
         </div>
     @endforeach
 </div>

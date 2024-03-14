@@ -75,7 +75,7 @@
         </header>
 
 
-        <section class="main-bg mx-4 mb-4 px-12 rounded-b-lg h-90 overflow-auto">
+        <section class="main-bg mx-4 px-12 rounded-b-lg h-90">
             @yield('content')
         </section>
     </body>
