@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('name');
             $table->integer('price');
             $table->string('category');
-            $table->float('rating')->nullable;
+            $table->text('description');
+            $table->float('rating')->nullable();
             $table->string('product_image');
 
             $table->timestamps();

@@ -3,31 +3,23 @@
 @endsection
 
 <di>
-    <div class="grid2 grid-cols-2 gap-4 justify-items-start">
+    <div class="grid2 grid-cols-3 gap-4 justify-items-start h-96">
 
-        <div class="relative flex justify-center ">
-            <h1 class="absolute top-1 left-0 right-0 text-center text-4xl">
+        <div class="relative flex justify-center w-96 h-96">
+            <h1 class="absolute top-1 left-0 right-0 text-center text-4xl ">
                 {{ $product->category }}
             </h1>
 
-            <img class="rounded h-fit" src="{{ $product->product_image }}" alt="">
+            <img class="rounded size-full" src="{{ asset('storage/' . $product->product_image) }}" alt="">
         </div>
 
 
-        <div class="grid grid-rows-3 gap-3 ">
+        <div class="grid grid-rows-3 gap-3 col-span-2 w-full pr-2">
             <div class="row-span-2">
                 <h1 class="text-4xl text-center mb-3">{{ $product->name }}</h1>
 
                 <p class="text-lg">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut pariatur ratione commodi atque corporis
-                    totam
-                    aut inventore incidunt, dicta ducimus ullam omnis iusto eaque neque officia quia fugiat harum
-                    laborum!
-                    Distinctio praesentium eius quo quidem fugit expedita dolor, in ipsa? Distinctio magni
-                    exercitationem
-                    quos.
-                    Nihil delectus veritatis recusandae nobis! Reiciendis beatae sapiente commodi inventore saepe
-
+                    {{ $product->description }}
                 </p>
             </div>
 

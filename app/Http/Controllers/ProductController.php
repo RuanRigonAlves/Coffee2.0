@@ -43,4 +43,25 @@ class ProductController extends Controller
 
         return view('products.showProduct', ['product' => $product]);
     }
+
+    public function create(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|integer',
+            'category' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'product_image' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+        ]);
+
+        if ($request->hasFile('product_image')) {
+            $path = $request->file('product_image')->store('public/product_images');
+
+            $validatedData['product_image'] = str_replace('public/', '', $path);
+        }
+
+        $product = Product::create($validatedData);
+
+        return redirect()->back()->with('success', 'Product added successfully');
+    }
 }

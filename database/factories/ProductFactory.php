@@ -21,6 +21,7 @@ class ProductFactory extends Factory
             'name' => fake()->name(),
             'price' => fake()->randomNumber(2),
             'category' => fake()->randomElement(['Food', 'Drink', 'Dessert']),
+            'description' => fake()->paragraph(),
             'rating' => 0,
             'product_image' => fake()->imageUrl(640, 480, 'Food'),
 
