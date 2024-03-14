@@ -21,7 +21,7 @@
     }
 
     .main-bg {
-        @apply bg-gradient-to-r from-zinc-800 to-stone-800
+        @apply bg-gradient-to-r from-neutral-800 to-zinc-800
     }
 
     .secondary-bg{
@@ -40,6 +40,10 @@ html {
     }
 
     
+}
+
+.main-bg2{
+    background-color: rgb(15, 23, 42)
 }
 
 .grid2 {

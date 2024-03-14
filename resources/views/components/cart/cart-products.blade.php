@@ -11,8 +11,8 @@
             <div class="ml-2 flex flex-col gap-4">
                 <p> {{ $cartProduct->product->name }}</p>
 
-                <p>is illum possimus vel tenetur illo perspiciatis sint rerum, eligendi sunt architecto veniam
-                    recusandae delectus rem, tempore corrupti.
+                <p>
+                    {{ $cartProduct->product->description }}
                 </p>
             </div>
 
