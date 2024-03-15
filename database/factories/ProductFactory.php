@@ -23,7 +23,8 @@ class ProductFactory extends Factory
             'category' => fake()->randomElement(['Food', 'Drink', 'Dessert']),
             'description' => fake()->paragraph(),
             'rating' => 0,
-            'product_image' => fake()->imageUrl(640, 480, 'Food'),
+            // 'product_image' => fake()->imageUrl(640, 480, 'Food'),
+            'product_image' => 'product_images/3QGEdVbkdMVC0InuaIHl8aTGXrMshbJoKciRiOM2.jpg',
 
         ];
     }

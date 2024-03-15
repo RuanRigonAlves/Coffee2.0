@@ -47,18 +47,19 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|integer',
-            'category' => 'required|string|max:255',
+            'name' => 'required|string|max:40',
+            'price' => 'required|integer|max:9999',
+            'category' => 'required|string|max:255|in:Dessert,Food,Drink',
             'description' => 'required|string|max:255',
             'product_image' => 'required|image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
-        if ($request->hasFile('product_image')) {
-            $path = $request->file('product_image')->store('public/product_images');
-
-            $validatedData['product_image'] = str_replace('public/', '', $path);
+        if (!$request->hasFile('product_image')) {
+            return back()->with('error', 'Something went wrong');
         }
+
+        $path = $request->file('product_image')->store('public/product_images');
+        $validatedData['product_image'] = str_replace('public/', '', $path);
 
         $product = Product::create($validatedData);
 

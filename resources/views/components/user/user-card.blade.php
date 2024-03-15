@@ -1,7 +1,7 @@
 @if (session('success'))
     <x-flash-messages.success />
 @endif
-<section class="flex justify-between h-full">
+<section class="flex justify-between h-full text-lg">
     <div class="flex justify-around">
         <div>
             <ul>
@@ -15,8 +15,9 @@
             </ul>
 
         </div>
+    </div>
 
-
+    <div>
         @if (!$user->has_address)
             <div class="mt-3">
                 <a href="{{ route('user_info.index') }}" class="btn-2">Address Form</a>
@@ -53,24 +54,7 @@
                 <a href="{{ route('user_info.addProductPage') }}" class="btn-2">Add Product</a>
             @endif
         </div>
-
-        <form method="POST" action="{{ route('user_info.isAdmin') }}" class="flex flex-col">
-            @csrf
-            @method('PATCH')
-            @if ($user->is_admin)
-                <div>
-                    <input type="radio" name="is_admin" id="is_user" value="0" required>
-                    <label for="is_user">User</label>
-                </div>
-            @else
-                <div>
-                    <input type="radio" name="is_admin" id="is_admin" value="1" required>
-                    <label for="is_admin">Admin</label>
-                </div>
-            @endif
-            <button type="submit" class="btn-2 w-24">Confirm</button>
         </form>
-
     </div>
 
 </section>

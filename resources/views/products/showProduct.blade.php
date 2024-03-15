@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <section class="h-full overflow-auto">
+    <section class="h-full overflow-auto pr-2">
         <section class="py-1">
             @if (session('success'))
                 <x-flash-messages.success />
