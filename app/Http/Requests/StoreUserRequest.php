@@ -25,7 +25,8 @@ class StoreUserRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:5',
-            'confirm_password' => 'required|same:password'
+            'confirm_password' => 'required|same:password',
+            'is_admin' => 'required'
         ];
     }
 
@@ -40,6 +41,7 @@ class StoreUserRequest extends FormRequest
             'password.min' => 'Passwords must be at least 5 characters.',
             'confirm_password.required' => 'Please confirm your password.',
             'confirm_password.same' => 'Passwords do not match.',
+            'is_admin.required' => 'This field is required'
         ];
     }
 }
