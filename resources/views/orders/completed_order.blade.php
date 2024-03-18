@@ -1,9 +1,20 @@
+@extends('layouts.admin_orders')
+
+@section('title', 'Complted Orders')
+
+@section('order_page')
+
+@section('page_headline')
+
+    <h2 class="text-3xl text-center">Completed page</h2>
+
+@endsection
+
 <div class="overflow-auto h-90 mt-1 pr-1">
     @foreach ($orders as $order)
         <div>
             <p>Order: {{ $order->created_at }}</p>
 
-            <p>Status: {{ $order->status }}</p>
             @foreach ($order->products as $product)
                 <div class="grid grid-cols-5 p-1 mb-4 border border-stone-700 rounded-xl">
                     <div>
@@ -22,3 +33,5 @@
         </div>
     @endforeach
 </div>
+
+@endsection

@@ -60,7 +60,7 @@ Route::post('cart', [CartProductsController::class, 'update'])->name('cart_produ
 
 Route::post('order', [OrdersController::class, 'store'])->name('order.store');
 
-Route::get('order', [OrdersController::class, 'index'])->name('order.index');
+Route::get('orders', [OrdersController::class, 'index'])->name('order.index');
 
 Route::delete('cart', [CartProductsController::class, 'destroy'])->name('cart_product.destroy');
 
@@ -77,3 +77,15 @@ Route::patch('user/isAdmin', [UserInfoController::class, 'isAdmin'])->name('user
 Route::get('user/addProduct', [UserInfoController::class, 'addProductPage'])->name('user_info.addProductPage');
 
 Route::post('user/addProduct', [ProductController::class, 'create'])->name('product.create');
+
+Route::get('admin_orders', [OrdersController::class, 'adminOrders'])->name('orders.admin_orders');
+
+Route::get('admin_orders/pending', [OrdersController::class, 'pendingOrdersPage'])->name('orders.pendingOrders');
+
+Route::get('admin_orders/accepted', [OrdersController::class, 'acceptedOrdersPage'])->name('orders.acceptedOrders');
+
+Route::get('admin_orders/completed', [OrdersController::class, 'completedOrdersPage'])->name('orders.completedOrders');
+
+Route::post('admin_orders/{order}/pending', [OrdersController::class, 'pendingOrdersUpdate'])->name('orders.pendingOrdersUpdate');
+
+Route::put('admin_orders/{order}/accepted', [OrdersController::class, 'acceptedOrdersUpdate'])->name('orders.acceptedOrdersUpdate');
