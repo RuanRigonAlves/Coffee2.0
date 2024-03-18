@@ -63,6 +63,15 @@ class Orders extends Model
         return $orders;
     }
 
+    public static function getCompletedOrders()
+    {
+        $orders = Orders::where('status', 'completed')->latest()->get();
+
+        $orders = static::unserializeOrder($orders);
+
+        return $orders;
+    }
+
     public static function unserializeOrder($orders)
     {
 

@@ -2,6 +2,10 @@
 
 @section('title', 'My Orders')
 
+@section('head')
+    <script src="{{ asset('js/order-toggle.js') }}"></script>
+@endsection
+
 @section('content')
 
     @if (session('success'))

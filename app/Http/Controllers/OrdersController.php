@@ -66,7 +66,7 @@ class OrdersController extends Controller
     {
         $user = auth()->user()->is_admin;
 
-        $orders = Orders::getOrders('completed');
+        $orders = Orders::getCompletedOrders();
 
         return view('orders.completed_order', [
             'orders' => $orders
