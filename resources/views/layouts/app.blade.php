@@ -51,6 +51,12 @@
                 </ul>
 
                 <ul class="flex items-center gap-4">
+                    @if (auth()->check() && auth()->user()->is_admin)
+                        <li>
+                            <a href="{{ route('orders.admin_orders') }}" class="btn px-4">Orders</a>
+                        </li>
+                    @endif
+
 
                     @if (!auth()->check())
                         <li>
