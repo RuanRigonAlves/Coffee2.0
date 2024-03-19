@@ -69,12 +69,12 @@ class User extends Authenticatable
         });
     }
 
-    public static function loginUser($request)
+    protected static function loginUser($request)
     {
         $request->session()->regenerate();
     }
 
-    public static function logoutUser($request)
+    protected static function logoutUser($request)
     {
         $request->session()->invalidate();
 
@@ -82,18 +82,18 @@ class User extends Authenticatable
     }
 
 
-    public static function saveUserAddress($user)
+    protected static function saveUserAddress($user)
     {
         $user->has_address = true;
         $user->save();
     }
 
-    public static function updateUserAddress($user, $validatedData)
+    protected static function updateUserAddress($user, $validatedData)
     {
         $user->userInfo->update($validatedData);
     }
 
-    public static function updateUserPermission($user, $bool)
+    protected static function updateUserPermission($user, $bool)
     {
         $user->is_admin = $bool;
         $user->save();

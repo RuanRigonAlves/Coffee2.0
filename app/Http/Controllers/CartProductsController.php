@@ -59,7 +59,7 @@ class CartProductsController extends Controller
         return back()->with('success', 'Product Removed From Cart');
     }
 
-    protected function validateQuanitity(Request $request)
+    private function validateQuanitity(Request $request)
     {
         return $request->validate([
             'quantity' => 'required|min:1|max:20|integer',

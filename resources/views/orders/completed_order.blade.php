@@ -35,7 +35,7 @@
             <div class="hidden border border-stone-500 p-2 rounded-xl" id="order-{{ $order->id }}">
 
                 @foreach ($order->products as $product)
-                    <div class="grid grid-cols-5 p-1 border border-stone-700 rounded-xl">
+                    <div class="grid grid-cols-5 p-1 rounded-xl mb-2">
                         <div>
                             <img src="{{ asset('storage/' . $product->product_image) }}" class="w-64 rounded-xl">
                         </div>

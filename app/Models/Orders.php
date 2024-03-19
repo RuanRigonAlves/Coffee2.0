@@ -20,7 +20,7 @@ class Orders extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public static function makeUserOrder($user)
+    protected static function makeUserOrder($user)
     {
         $user->load('cart.cart_products');
         $cartId = $user->cart->id;
@@ -44,7 +44,7 @@ class Orders extends Model
         return true;
     }
 
-    public static function getUserOrders($user)
+    protected static function getUserOrders($user)
     {
         $orders = Orders::where('user_id', $user->id)->latest()->get();
 
@@ -53,7 +53,7 @@ class Orders extends Model
         return $orders;
     }
 
-    public static function getOrders($status)
+    protected static function getOrders($status)
     {
         $orders = Orders::where('status', $status)->oldest()->get();
 
@@ -63,7 +63,7 @@ class Orders extends Model
         return $orders;
     }
 
-    public static function getCompletedOrders()
+    protected static function getCompletedOrders()
     {
         $orders = Orders::where('status', 'completed')->latest()->get();
 
@@ -72,7 +72,7 @@ class Orders extends Model
         return $orders;
     }
 
-    public static function unserializeOrder($orders)
+    private static function unserializeOrder($orders)
     {
 
         foreach ($orders as $order) {
@@ -97,7 +97,7 @@ class Orders extends Model
         return $orders;
     }
 
-    public static function updateOrder($decision, $order)
+    protected static function updateOrder($decision, $order)
     {
         if ($order) {
             $order->update([

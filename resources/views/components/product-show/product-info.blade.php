@@ -6,11 +6,7 @@
 
 <div class="grid2 grid-cols-3 gap-4 justify-items-start h-96">
 
-    <div class="relative flex justify-center w-96 h-96">
-        <h1 class="absolute top-1 left-0 right-0 text-center text-4xl ">
-            {{ $product->category }}
-        </h1>
-
+    <div class="w-96 h-96">
         <img class="rounded size-full" src="{{ asset('storage/' . $product->product_image) }}" alt="">
     </div>
 
@@ -68,5 +64,6 @@
                 @endif
             </div>
         </div>
+
     </div>
 </div>

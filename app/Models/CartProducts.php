@@ -25,7 +25,7 @@ class CartProducts extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public static function addProduct(Product $product, $quantity, $cartId)
+    protected static function addProduct(Product $product, $quantity, $cartId)
     {
         static::create([
             'product_id' => $product->id,
@@ -34,19 +34,19 @@ class CartProducts extends Model
         ]);
     }
 
-    public static function getCartProduct($cartProductId)
+    protected static function getCartProduct($cartProductId)
     {
         return static::where('id', $cartProductId)->first();
     }
 
 
-    public static function updateQuantity($cartProduct, $quantity)
+    protected static function updateQuantity($cartProduct, $quantity)
     {
         $cartProduct->quantity = $quantity;
         $cartProduct->save();
     }
 
-    public static function removeFromCart($cartProduct)
+    protected static function removeFromCart($cartProduct)
     {
         $cartProduct->delete();
     }

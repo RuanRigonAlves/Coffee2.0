@@ -23,12 +23,12 @@ class Cart extends Model
         return $this->belongsTo(User::class);
     }
 
-    public static function getCartWithProductsByUser($user)
+    protected static function getCartWithProductsByUser($user)
     {
         return $user->cart()->with('cart_products.product')->first();
     }
 
-    public static function totalCartValue($cartProducts)
+    protected static function totalCartValue($cartProducts)
     {
         $totalValue = 0;
 
@@ -40,7 +40,7 @@ class Cart extends Model
         return $totalValue;
     }
 
-    public static function getOrCreateCart($userId)
+    protected static function getOrCreateCart($userId)
     {
         return static::firstOrCreate(['user_id' => $userId]);
     }
