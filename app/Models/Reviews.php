@@ -32,7 +32,7 @@ class Reviews extends Model
         });
     }
 
-    public static function createReview($user, $product, $data)
+    protected static function createReview($user, $product, $data)
     {
         $data['user_id'] = $user->id;
         $data['user_name'] = $user->name;

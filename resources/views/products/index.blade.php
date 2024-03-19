@@ -9,12 +9,15 @@
 
             <x-product-list.category-form :categoriesFilter="$categoriesFilter" :selectedCategories="$selectedCategories" />
 
+            {{-- <x-product-list.sort-product :sort="$sort" :products="$products" /> --}}
+
+
         </section>
 
         <section class="pl-2">
             <x-product-list.sort-product :sort="$sort" :products="$products" />
 
-            {{ $products->links('pagination::simple-tailwind') }}
+            {{-- {{ $products->links('pagination::simple-tailwind') }} --}}
 
             <x-product-list.products-list :products="$products" />
         </section>

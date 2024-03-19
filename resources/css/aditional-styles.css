@@ -1,0 +1,43 @@
+:root{
+    --primary-color: #202020;
+    --primary-color-two: #262626;
+    --secondary-color: #a86527;
+    --text-color-one: #fcf0da
+}
+
+.bg-primary {
+    /* background-image: linear-gradient(to top left, var(--primary-color), var(--primary-color-two)); */
+
+    background-image: linear-gradient(to top, #3a281c, #525252);
+
+    /* background-image: url('/storage/app/public/images/coffee_background.jpg'); */
+    /* background-image: url('/storage/app/public/images/coffe-2.jpg'); */
+
+    /* filter: blur(2px); */
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color);
+}
+
+/* .border-primary {
+    border-color: var(--primary-color);
+} */
+.border-secondary {
+    border-color: var(--secondary-color);
+}
+
+
+.text-color-primary {
+    color: var(--text-color-one);
+}
+
+.product-bg-card{
+    /* background-color: #242931; */
+    /* background-color: #3a281c; */
+    background-image: linear-gradient(to top, #3a281c, #525252);
+}
+
+.product-bg-card:hover{
+    border: 1px solid var(--secondary-color)
+}

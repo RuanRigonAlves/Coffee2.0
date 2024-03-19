@@ -1,14 +1,19 @@
+@import './aditional-styles.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import './styles.css';
 
 @layer components {
     .btn{
-        @apply p-1 border-b-2 border-transparent hover:border-amber-500 ease-in duration-200 hover:text-amber-500
+        @apply p-1 border-b-2 border-transparent  hover:border-amber-500 hover:text-amber-500 ease-in duration-200
     }
     .btn-2{
-        @apply p-1 rounded border-2 border-amber-500 hover:border-amber-500 ease-in duration-200 hover:text-amber-500
+        @apply p-1 rounded border-2 border-transparent bg-secondary hover:border-zinc-200 ease-in duration-200
+    }
+
+    .btn-remove{
+        @apply rounded border-2 border-transparent ease-in duration-200
     }
 
     .border-effect {
@@ -42,14 +47,6 @@ html {
     
 }
 
-.main-bg2{
-    background-color: rgb(15, 23, 42)
-}
-
-.product-bg-card{
-    background-image: linear-gradient(to bottom right, #42424275, #35353575);
-}
-
 .grid2 {
     display: grid;
 }
@@ -72,7 +69,7 @@ box-shadow: inset 0 0 2px black;
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-background: rgb(245, 158, 11);
+background: var(--secondary-color);
 /* border-radius: 10px; */
 }
 }

@@ -20,15 +20,15 @@
 
     </head>
 
-    <body class="secondary-bg overflow-hidden">
+    <body class="bg-primary overflow-hidden">
 
         <header class="text-xl">
-            <div class="main-bg py-2 px-6 border-b border-amber-500 flex justify-between">
+            <div class="py-2 px-6 border-b border-stone-500 flex justify-between">
 
                 <ul class="flex items-center gap-4">
                     <li>
                         <a href="/" class="btn w-52 text-center flex items-center">
-                            <x-icons.coffee-icon class="h-10 stroke-amber-500 " />
+                            <x-icons.coffee-icon class="h-10 stroke-white" />
                             <p class="text-center w-full">
                                 Home
                             </p>
@@ -53,7 +53,7 @@
                 <ul class="flex items-center gap-4">
                     @if (auth()->check() && auth()->user()->is_admin)
                         <li>
-                            <a href="{{ route('orders.admin_orders') }}" class="btn px-4">Orders</a>
+                            <a href="{{ route('orders.pendingOrders') }}" class="btn px-4">Orders</a>
                         </li>
                     @endif
 
@@ -80,9 +80,10 @@
             </div>
         </header>
 
-        <section class="main-bg px-6 h-full overflow-auto pb-20">
+        <section class="px-6 h-full overflow-auto pb-20">
             @yield('content')
         </section>
+
     </body>
 
 </html>

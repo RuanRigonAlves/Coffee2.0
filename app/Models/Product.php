@@ -29,7 +29,7 @@ class Product extends Model
         return $this->hasMany(Reviews::class);
     }
 
-    public function averageRating()
+    private function averageRating()
     {
         return $this->reviews()->avg('rating') ?: 0;
     }
@@ -41,7 +41,7 @@ class Product extends Model
         $this->save();
     }
 
-    public static function filterAndSort($productName, $categories, $sort, $order)
+    protected static function filterAndSort($productName, $categories, $sort, $order)
     {
         $query = self::query();
 
@@ -73,7 +73,7 @@ class Product extends Model
         return $query->paginate(12);
     }
 
-    public static function getProductWithReviews($productId)
+    protected static function getProductWithReviews($productId)
     {
         return Product::with('reviews')->findOrFail($productId);
     }
