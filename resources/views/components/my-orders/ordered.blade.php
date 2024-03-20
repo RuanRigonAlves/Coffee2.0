@@ -20,7 +20,7 @@
                 <button class="btn-2 js-btn" id="order-toggle-{{ $order->id }}">Show</button>
             </div>
 
-            <div class="hidden border border-stone-500 p-2 rounded-xl" id="order-{{ $order->id }}">
+            <div class="hidden border border-stone-500 p-2 rounded-xl expandable" id="order-{{ $order->id }}">
 
                 @foreach ($order->products as $product)
                     <div class="grid grid-cols-5 p-1 mb-2 rounded-xl">

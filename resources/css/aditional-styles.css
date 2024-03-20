@@ -6,38 +6,35 @@
 }
 
 .bg-primary {
-    /* background-image: linear-gradient(to top left, var(--primary-color), var(--primary-color-two)); */
-
     background-image: linear-gradient(to top, #3a281c, #525252);
-
-    /* background-image: url('/storage/app/public/images/coffee_background.jpg'); */
-    /* background-image: url('/storage/app/public/images/coffe-2.jpg'); */
-
-    /* filter: blur(2px); */
 }
 
 .bg-secondary {
     background-color: var(--secondary-color);
 }
 
-/* .border-primary {
-    border-color: var(--primary-color);
-} */
 .border-secondary {
     border-color: var(--secondary-color);
 }
-
 
 .text-color-primary {
     color: var(--text-color-one);
 }
 
 .product-bg-card{
-    /* background-color: #242931; */
-    /* background-color: #3a281c; */
     background-image: linear-gradient(to top, #3a281c, #525252);
 }
 
 .product-bg-card:hover{
     border: 1px solid var(--secondary-color)
+}
+
+.expandable {
+    transition: all .3s ease-in-out;
+    transform-origin: left top;
+    transform: scaleY(0);
+}
+
+.e-show {
+    transform: scaleY(1);
 }
